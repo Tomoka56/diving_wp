@@ -148,8 +148,7 @@ $contact = esc_url(home_url('/contact'));
           </h3>
           <div class="about-content__body-inner">
             <p class="about-content__text">
-              ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br>
-              ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+            <?php $message = scf::get('message',80); echo sanitize_text_field( $message ); ?>
             </p>
             <div class="about-content__btn">
               <a href="<?php echo $about_us; ?>" class="btn">

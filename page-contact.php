@@ -23,6 +23,11 @@ get_header(); ?>
             }
             ?>
           </div>
+          <!-- もし必須項目が入力されていなければ以下のコードを出力 -->
+
+          <div class="page-contact__error">
+          <p class="page-contact__message">※必須項目が入力されていません。<br class="visible--sp"><span class="visible--sp">&emsp;</span>入力してください。</p>
+        </div>
           <div class="page-contact__form">
             <?php echo do_shortcode('[contact-form-7 id="198" title="お問い合わせフォーム"]');?>
             <!-- <form action="" class="form"> -->

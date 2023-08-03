@@ -61,6 +61,14 @@
     if ( $query->is_post_type_archive('voice') ) { /* お客様の声の時は表示件数を6件に */
           $query->set( 'posts_per_page', '6' );
       }
+      // もしタクソノミー一覧ページなら
+      if ( $query->is_tax('campaign_category') ) {
+        $query->set( 'posts_per_page', '4' );
+      }
+      // もしタクソノミー一覧ページなら
+      if ( $query->is_tax('voice_category') ) {
+        $query->set( 'posts_per_page', '6' );
+      }
 }
 add_action( 'pre_get_posts', 'change_posts_per_page' );
 

@@ -38,8 +38,7 @@ get_header(); ?>
                   <h3 class="about-content__title about-content__title--sub">Dive&nbsp;into<br />the&nbsp;Ocean</h3>
                   <div class="about-content__body-inner about-content__body-inner--sub">
                     <p class="about-content__text">
-                      ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />
-                      ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
+                      <?php $message = scf::get('message'); echo sanitize_text_field( $message ); ?>
                     </p>
                   </div>
                 </div>

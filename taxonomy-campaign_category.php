@@ -24,7 +24,10 @@ $contact = esc_url(home_url('/contact'));
             <div class="sub-campaign__tab tab1">
               <div class="tab1__inner">
                 <ul class="tab1__items">
-                  <li class="tab1__item is-active"><a href="<?php echo $campaign_category; ?>"></a>ALL</li>
+                  <?php
+                    $campaign = esc_url(home_url('/campaign'));
+                  ?>
+                  <li class="tab1__item is-active"><a href="<?php echo $campaign; ?>">ALL</a></li>
                   <?php
                     $taxonomy_terms = get_terms('campaign_category');
                     if(!empty($taxonomy_terms)&&!is_wp_error($taxonomy_terms)){
@@ -49,7 +52,7 @@ $contact = esc_url(home_url('/contact'));
                       </div>
                     <?php else : ?>
                       <div class="campaign-card__img">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/noimage.jpg" alt="" />
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/sky.jpg" alt="空" />
                       </div>
                     <?php endif; ?>
                     <div class="campaign-card__body-top campaign-card__body-top--sub">

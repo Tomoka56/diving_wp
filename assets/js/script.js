@@ -235,3 +235,4 @@ jQuery(function ($) {
     $(this).toggleClass('is-close', 300);
   });
 });
+
