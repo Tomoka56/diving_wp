@@ -3246,6 +3246,18 @@ details[open] summary::before {
 	display: none;
 }
 
+.wpcf7-not-valid-tip {
+  display: none;
+}
+
+.wpcf7-form.invalid .wpcf7-response-output {
+  display: none;
+}
+
+.wpcf7-form.sent .wpcf7-response-output {
+  display: none;
+}
+
 .wpcf7-form-control.has-spinner.wpcf7-submit {
 	color: #fff;
 	font-family: "Gotu", sans-serif;
