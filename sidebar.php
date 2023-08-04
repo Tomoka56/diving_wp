@@ -171,9 +171,9 @@ $campaign = esc_url(home_url('/campaign'));
       <div class="side-bar__items archive-list">
         <details class="archive-list__toggle-item" open>
           <summary class="archive-list__year">2023</summary>
-          <p class="archive-list__month">3月</p>
-          <p class="archive-list__month">2月</p>
-          <p class="archive-list__month">1月</p>
+          <a href="<?php echo get_month_link( 2023, 8 ); ?>"><p class="archive-list__month">8月</p></a>
+          <a href="<?php echo get_month_link( 2023, 7 ); ?>"><p class="archive-list__month">7月</p></a>
+          <a href="<?php echo get_month_link( 2023, 6 ); ?>"><p class="archive-list__month">6月</p></a>
         </details>
         <details class="archive-list__toggle-item">
           <summary class="archive-list__year">2022</summary>
