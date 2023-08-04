@@ -22,32 +22,31 @@ $contact = esc_url(home_url('/contact'));
 </div>
 <div class="top-fv fv" id="fv">
   <div class="fv__inner">
+
     <div class="swiper fv__slider js-fv-slider">
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <picture class="fv__img1">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_sp.jpg" />
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_pc.jpg" alt="エメラルドグリーンの海底を歩くウミガメ" />
-          </picture>
-        </div>
-        <div class="swiper-slide">
-          <picture class="fv__img1">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_sp1.jpg" />
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_pc1.jpg" alt="海の中から見たウミガメが泳いでいる様子" />
-          </picture>
-        </div>
-        <div class="swiper-slide">
-          <picture class="fv__img2">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_sp2.jpg" />
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_pc2.jpg" alt="快晴のもと広い海を進む船" />
-          </picture>
-        </div>
-        <div class="swiper-slide">
-          <picture class="fv__img3">
-            <source media="(max-width: 767px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_sp3.jpg" />
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/fv_pc3.jpg" alt="エメラルドグリーンの沖縄の海辺" />
-          </picture>
-        </div>
+        <?php for ($i = 1; $i <= 4; $i++) : ?>
+          <?php
+          $img_sp = get_field('img' . $i . '_sp');
+          $img_pc = get_field('img' . $i . '_pc');
+          if ($img_sp || $img_pc) :
+          ?>
+            <div class="swiper-slide">
+              <picture class="fv__img">
+                <?php if ($img_sp) : ?>
+                  <source media="(max-width: 767px)" srcset="<?php echo esc_url($img_sp); ?>" />
+                <?php endif; ?>
+                <?php if ($img_pc) : ?>
+                  <!-- PC用画像を表示 -->
+                  <img src="<?php echo esc_url($img_pc); ?>" />
+                <?php elseif ($img_sp) : ?>
+                  <!-- PC用画像がない場合はスマートフォン用画像を表示 -->
+                  <img src="<?php echo esc_url($img_sp); ?>" />
+                <?php endif; ?>
+              </picture>
+            </div>
+          <?php endif; ?>
+        <?php endfor; ?>
       </div>
     </div>
     <div class="fv__title-block fade-in">
@@ -148,7 +147,8 @@ $contact = esc_url(home_url('/contact'));
           </h3>
           <div class="about-content__body-inner">
             <p class="about-content__text">
-            <?php $message = scf::get('message',80); echo sanitize_text_field( $message ); ?>
+              <?php $message = scf::get('message', 80);
+              echo sanitize_text_field($message); ?>
             </p>
             <div class="about-content__btn">
               <a href="<?php echo $about_us; ?>" class="btn">

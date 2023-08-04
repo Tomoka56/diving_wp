@@ -25,7 +25,9 @@ get_header(); ?>
         </div>
         <div class="terms-of-service__contents">
           <div class="terms-of-service__contents-inner">
-            <h2 class="terms-of-service__title">利用規約</h2>
+            <h2 class="terms-of-service__title"><?php the_title(); ?></h2>
+            <?php the_content(); ?>
+<!--
             <p class="terms-of-service__description-top">以下は、Webサイトで使用する一般的な利用規約の例です。</p>
               <ol class="terms-of-service__items">
                 <li class="terms-of-service__item">
@@ -59,7 +61,7 @@ get_header(); ?>
                 </li>
               </ol>
             <p class="terms-of-service__description-bottom">
-              以上が、当社の利用規約の概要です。お客様のサービス利用にあたっては、本規約をお読みいただき、同意いただける場合のみサービスをご利用ください。</p>
+              以上が、当社の利用規約の概要です。お客様のサービス利用にあたっては、本規約をお読みいただき、同意いただける場合のみサービスをご利用ください。</p> -->
           </div>
         </div>
       </div>

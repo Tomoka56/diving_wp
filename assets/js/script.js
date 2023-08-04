@@ -58,7 +58,7 @@ jQuery(function ($) {
             speed: 1500,
             autoplay: {
               delay: 2500
-            }
+            },
           });
           $('.js-btn,.js-mask').addClass('is-hidden');
           $('.js-header').addClass('color');
@@ -76,7 +76,7 @@ jQuery(function ($) {
             speed: 1500,
             autoplay: {
               delay: 2500
-            }
+            },
           });
           $('.js-header').addClass('color');
         }, 4000);
@@ -235,4 +235,3 @@ jQuery(function ($) {
     $(this).toggleClass('is-close', 300);
   });
 });
-

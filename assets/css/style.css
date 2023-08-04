@@ -1224,6 +1224,10 @@ details[open] summary::before {
 	width: 0.875rem;
 }
 
+.wpcf7-form-control.wpcf7-checkbox.wpcf7-validates-as-required.form__checkbox {
+	display: grid;
+}
+
 .form__item label {
 	display: block;
 }
@@ -1372,9 +1376,7 @@ details[open] summary::before {
 	width: 100%;
 }
 
-.fv .fv__img1 img,
-.fv .fv__img2 img,
-.fv .fv__img3 img {
+.fv .fv__img img {
 	-o-object-fit: cover;
 	aspect-ratio: 375/667;
 	display: block;
@@ -2141,7 +2143,6 @@ details[open] summary::before {
 .privacy-policy__contents-inner {
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 1.5rem;
 	max-width: 32.5rem;
 	width: 100%;
 }
@@ -2150,8 +2151,7 @@ details[open] summary::before {
 	font-size: 1.5rem;
 	font-weight: 500;
 }
-
-.privacy-policy__description-1 {
+.privacy-policy__contents p {
 	font-size: 1rem;
 	line-height: 2;
 	margin-top: 2.4375rem;
@@ -2163,15 +2163,16 @@ details[open] summary::before {
 	margin-top: 1.9375rem;
 }
 
-.privacy-policy__items {
+.privacy-policy__contents ol {
 	list-style: decimal;
 }
 
-.privacy-policy__items:first-of-type {
+.privacy-policy__contents ol:first-of-type {
 	margin-top: 1.9375rem;
 }
 
-.privacy-policy__items-inner {
+
+/* .privacy-policy__items-inner {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -2181,9 +2182,9 @@ details[open] summary::before {
 	font-size: 1rem;
 	line-height: 2;
 	margin-top: 2.0625rem;
-}
+} */
 
-.privacy-policy__item {
+.privacy-policy__contents li {
 	font-size: 1rem;
 	line-height: 2;
 	margin-left: 1.5rem;
@@ -3042,24 +3043,24 @@ details[open] summary::before {
 	font-weight: 500;
 }
 
-.terms-of-service__description-top {
+.terms-of-service__contents p {
 	font-size: 1rem;
 	line-height: 2;
 	margin-top: 2.4375rem;
 }
 
-.terms-of-service__description-bottom {
+/* .terms-of-service__description-bottom {
 	font-size: 1rem;
 	line-height: 2;
 	margin-top: 2.125rem;
-}
+} */
 
-.terms-of-service__items {
+.terms-of-service__contents ol {
 	list-style: decimal;
 	margin-top: 1.9375rem;
 }
 
-.terms-of-service__items-inner {
+/* .terms-of-service__items-inner {
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -3068,9 +3069,9 @@ details[open] summary::before {
 	display: block;
 	font-size: 1rem;
 	line-height: 2;
-}
+} */
 
-.terms-of-service__item {
+.terms-of-service__contents li {
 	font-size: 1rem;
 	line-height: 2;
 	margin-left: 1.5rem;
@@ -3330,6 +3331,10 @@ details[open] summary::before {
 .wpcf7-form-control.has-spinner.wpcf7-submit:hover::after {
 	opacity: 1;
 	transform: scale(1, 1);
+}
+
+.wpcf7-submit:disabled {
+	opacity: .5;
 }
 
 .nav-links {
@@ -4004,9 +4009,7 @@ a:hover {
 	width: 0.5625rem;
 }
 
-.fv .fv__img1 img,
-.fv .fv__img2 img,
-.fv .fv__img3 img {
+.fv .fv__img img {
 	aspect-ratio: 1440/768;
 }
 
@@ -4637,7 +4640,6 @@ a:hover {
 .tab1__items {
 	-moz-column-gap: 2rem;
 	column-gap: 2rem;
-	/* display: flex; */
 	grid-template-columns: repeat(5, 1fr);
 
 }
@@ -4648,6 +4650,13 @@ a:hover {
 
 .tab1__item:hover {
 	cursor: pointer;
+	color: #fff;
+	background-color: #408F95;
+	transition: .3s ease-in-out;
+}
+
+.tab1__item:hover a {
+	opacity: 1;
 }
 
 .tab2__inner {

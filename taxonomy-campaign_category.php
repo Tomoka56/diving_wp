@@ -27,7 +27,7 @@ $contact = esc_url(home_url('/contact'));
                   <?php
                     $campaign = esc_url(home_url('/campaign'));
                   ?>
-                  <li class="tab1__item is-active"><a href="<?php echo $campaign; ?>">ALL</a></li>
+                  <li class="tab1__item"><a href="<?php echo $campaign; ?>">ALL</a></li>
                   <?php
                     $taxonomy_terms = get_terms('campaign_category');
                     if(!empty($taxonomy_terms)&&!is_wp_error($taxonomy_terms)){
