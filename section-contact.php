@@ -3,7 +3,7 @@ $contact = esc_url(home_url('/contact'));
 ?>
 <?php if (is_front_page()): ?>
   <section class="top-contact contact" id="contact">
-<?php else : ?>
+<?php elseif (!is_404()): ?>
   <section class="sub-contact contact" id="contact">
 <?php endif; ?>
         <div class="contact__wrapper inner">

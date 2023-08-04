@@ -12,7 +12,7 @@ $privacy_policy = esc_url(home_url('/privacy-policy'));
 $site_map = esc_url(home_url('/site-map'));
 $terms_of_service = esc_url(home_url('/terms-of-service'));
 ?>
-<?php if (!is_page(array('contact', 'thanks', '404'))) : ?>
+<?php if (!is_page(array('contact', 'thanks')) && !is_404()) : ?>
   <?php get_template_part('section-contact'); ?>
 <?php endif; ?>
 
