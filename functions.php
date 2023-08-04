@@ -87,38 +87,6 @@ function redirect_to_thanks_page() {
     </script>
   EOD;
 }
-// contact form 7 エラーメッセージ変更
-function custom_wpcf7_validate_name( $result, $tags ) {
-  foreach ( $tags as $tag ) {
-    $name = $tag['name'];
-    if ( $name == 'your-name' ) {
-      $input = $_POST[ $name ];
-      if ($input == '') {
-        $result->invalidate( $name, 'お名前は必須です。' );
-      }
-    }
-    if ( $name == 'your-email' ) {
-      $yourmail = $_POST[ $name ];
-      if ($yourmail == '') {
-        $result->invalidate( $name, 'メールアドレスは必須です。' );
-      }
-    }
-    if ( $name == 'your-email_confirm' ) {
-      $yourmail = $_POST[ $name ];
-      if ($yourmail == '') {
-        $result->invalidate( $name, 'メールアドレス確認は必須です。' );
-      }
-    }
-    if ( $name == 'your-tel' ) {
-      $yourtel = $_POST[ $name ];
-      if ($yourtel == '') {
-        $result->invalidate( $name, '電話番号は必須です。' );
-      }
-    }
-  }
-  return $result;
-}
-add_filter( 'wpcf7_validate', 'custom_wpcf7_validate_name', 11, 2 );
 
 function Change_menulabel() {
   global $menu;
@@ -145,3 +113,8 @@ function Change_menulabel() {
   }
   add_action( 'init', 'Change_objectlabel' );
   add_action( 'admin_menu', 'Change_menulabel' );
+
+  function custom_excerpt_length( $length ) {
+    return 85;	//表示したい文字数
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
