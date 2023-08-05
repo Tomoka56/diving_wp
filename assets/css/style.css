@@ -351,6 +351,16 @@ summary::-webkit-details-marker {
 	position: relative;
 }
 
+summary {
+  display: block;  /* 矢印のアイコンを非表示にする */
+}
+
+/* Safari で三角形のアイコンを非表示にする */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+
 summary::before {
 	border-color: transparent transparent transparent #408F95;
 	border-style: solid;
