@@ -27,19 +27,19 @@ get_header(); ?>
         <div class="sub-information__tab tab2">
           <div class="tab2__inner">
             <ul class="tab2__items">
-              <li class="tab2__item js-tab is-active">
+              <li class="tab2__item js-tab2 is-active">
                 <div class="tab2__img tab-icon1 visible--pc">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/info-icon-green1.png" alt="クジラのアイコン（白）">
                 </div>
                 ライセンス<br class="visible--sp">講習
               </li>
-              <li class="tab2__item js-tab">
+              <li class="tab2__item js-tab2">
                 <div class="tab2__img tab-icon2 visible--pc">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/info-icon-green2.png" class="visible--pc" alt="クジラのアイコン（グリーン）">
                 </div>
                 ファン<br class="visible--sp">ダイビング
               </li>
-              <li class="tab2__item js-tab">
+              <li class="tab2__item js-tab2">
                 <div class="tab2__img tab-icon3 visible--pc">
                   <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/info-icon-green3.png" class="visible--pc" alt="クジラのアイコン（グリーン）">
                 </div>
