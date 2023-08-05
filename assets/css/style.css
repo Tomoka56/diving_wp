@@ -515,27 +515,27 @@ details[open] summary::before {
 	padding-left: 1.5rem;
 }
 
-.blog {
+.blog1 {
 	position: relative;
 	z-index: -20;
 }
 
-.blog__container {
+.blog1__container {
 	margin-top: 1.625rem;
 }
 
-.blog__inner {
+.blog1__inner {
 	margin-top: 5rem;
 	position: relative;
 	z-index: -18;
 }
 
-.blog__inner.inner {
+.blog1__inner.inner {
 	padding-left: 1.3125rem;
 	padding-right: 1.3125rem;
 }
 
-.blog__btn {
+.blog1__btn {
 	margin-top: 2.5rem;
 	position: relative;
 	text-align: center;
@@ -1212,12 +1212,11 @@ details[open] summary::before {
 	cursor: pointer;
 	display: block;
 	display: inline-flex;
-	height: 0.875rem;
+	height: 15px;
 	margin: 0;
 	margin: initial;
-	margin-right: 0.625rem;
-	vertical-align: sub;
-	width: 0.875rem;
+	vertical-align: middle;
+	width: 15px;
 }
 
 .wpcf7-form-control.wpcf7-checkbox.wpcf7-validates-as-required.form__checkbox {
@@ -1283,8 +1282,9 @@ details[open] summary::before {
 	width: 100%;
 }
 
-.form__confirm-block {
-	margin-left: 0.5rem;
+.form__item .wpcf7-list-item,
+.form__confirm .wpcf7-list-item {
+	margin-left: initial;
 }
 
 .form__confirm label {
@@ -1298,8 +1298,9 @@ details[open] summary::before {
 	display: block;
 	display: inline-flex;
 	height: 1.375rem;
-	vertical-align: text-top;
+	vertical-align: middle;
 	width: 1.375rem;
+	margin: 0;
 }
 
 .form__item input[type=checkbox],
@@ -1337,7 +1338,15 @@ details[open] summary::before {
 
 .form__item input[type=checkbox]:checked::after,
 .form__confirm input[type=checkbox]:checked::after {
-	opacity: 1; /*チェック後表示*/
+	opacity: 1;
+}
+
+.form__item .wpcf7-list-item-label{
+	margin-left: 10px;
+}
+
+.form__confirm .wpcf7-list-item-label{
+	margin-left: 16px;
 }
 
 .form__btn {
@@ -1877,25 +1886,33 @@ details[open] summary::before {
 	display: none;
 }
 
-.page-contact__message {
+.wpcf7-form.invalid {
+	position: relative;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output {
 	color: #C94800;
 	font-size: 0.875rem;
 	font-weight: 400;
 	line-height: 1.4;
-	margin: auto;
-	max-width: 65%;
-	width: 100%;
+	text-align: center;
+	border-color: transparent;
+	position: absolute;
+	top: -60px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .page-contact-error__form {
 	margin-top: 2.375rem;
 }
 
-.form__item--error input[type=text],
-.form__item--error input[type=email],
-.form__item--error input[type=tel],
-.form__item--error select,
-.form__item--error textarea {
+.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required.wpcf7-not-valid,
+.wpcf7-form-control.wpcf7-text.wpcf7-email.wpcf7-validates-as-required.wpcf7-validates-as-email.wpcf7-not-valid,
+.wpcf7-form-control.wpcf7-text.wpcf7-checkbox.wpcf7-validates-as-required.wpcf7-validates-as-checkbox.wpcf7-not-valid,
+.wpcf7-form-control.wpcf7-text.wpcf7-tel.wpcf7-validates-as-required.wpcf7-validates-as-tel.wpcf7-not-valid,
+.wpcf7-form-control.wpcf7-checkbox.wpcf7-validates-as-required.form__checkbox.wpcf7-not-valid,
+.wpcf7-form-control.wpcf7-textarea.wpcf7-validates-as-required.wpcf7-not-valid {
 	background-color: rgba(201, 72, 0, 0.2);
 	border: 1px solid #C94800;
 }
@@ -1905,7 +1922,7 @@ details[open] summary::before {
 }
 
 ::placeholder {
-	color: #fff;
+	color: gray;
 }
 
 .page-contact {
@@ -2166,19 +2183,6 @@ details[open] summary::before {
 .privacy-policy__contents ol:first-of-type {
 	margin-top: 1.9375rem;
 }
-
-
-/* .privacy-policy__items-inner {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.privacy-policy__items-inner span {
-	display: block;
-	font-size: 1rem;
-	line-height: 2;
-	margin-top: 2.0625rem;
-} */
 
 .privacy-policy__contents li {
 	font-size: 1rem;
@@ -3045,27 +3049,10 @@ details[open] summary::before {
 	margin-top: 2.4375rem;
 }
 
-/* .terms-of-service__description-bottom {
-	font-size: 1rem;
-	line-height: 2;
-	margin-top: 2.125rem;
-} */
-
 .terms-of-service__contents ol {
 	list-style: decimal;
 	margin-top: 1.9375rem;
 }
-
-/* .terms-of-service__items-inner {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.terms-of-service__items-inner span {
-	display: block;
-	font-size: 1rem;
-	line-height: 2;
-} */
 
 .terms-of-service__contents li {
 	font-size: 1rem;
@@ -3247,10 +3234,6 @@ details[open] summary::before {
   display: none;
 }
 
-.wpcf7-form.invalid .wpcf7-response-output {
-  display: none;
-}
-
 .wpcf7-form.sent .wpcf7-response-output {
   display: none;
 }
@@ -3299,21 +3282,6 @@ details[open] summary::before {
 	padding-top: 0.9375rem;
 	width: 100%;
 	z-index: 100;
-}
-
-.wpcf7-form-control.has-spinner.wpcf7-submit .btn__bg::before {
-	background: #fff;
-	border: 0.0625rem solid #408F95;
-	content: "";
-	display: block;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	transform: scale(0, 1);
-	transform-origin: left top;
-	transition: 0.3s cubic-bezier(0.45, 0, 0.55, 1);
-	width: 100%;
 }
 
 .form__btn .btn:hover {
@@ -3613,7 +3581,7 @@ a:hover {
 	bottom: 0.125rem;
 }
 
-.blog::before {
+.blog1::before {
 	background-image: url(../../assets/images/common/bg1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -3627,7 +3595,7 @@ a:hover {
 	z-index: -100;
 }
 
-.blog::after {
+.blog1::after {
 	background-image: url(../../assets/images/common/bg_icon2.png);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -3641,18 +3609,18 @@ a:hover {
 	z-index: -1;
 }
 
-.blog__container {
+.blog1__container {
 	margin-top: 4.875rem;
 	position: relative;
 	z-index: -1;
 }
 
-.blog__inner {
+.blog1__inner {
 	margin-top: 0;
 	margin-top: initial;
 }
 
-.blog__btn {
+.blog1__btn {
 	margin-top: 5rem;
 }
 
