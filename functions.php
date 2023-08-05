@@ -52,6 +52,7 @@
     }
   );
 
+// ------------------------------------------------
   function change_posts_per_page($query) {
     if ( is_admin() || ! $query->is_main_query() )
         return;
@@ -61,20 +62,20 @@
     if ( $query->is_post_type_archive('voice') ) { /* お客様の声の時は表示件数を6件に */
           $query->set( 'posts_per_page', '6' );
       }
-      // もしタクソノミー一覧ページなら
-      if ( $query->is_tax('campaign_category') ) {
-        $query->set( 'posts_per_page', '4' );
-      }
-      // もしタクソノミー一覧ページなら
-      if ( $query->is_tax('voice_category') ) {
-        $query->set( 'posts_per_page', '6' );
-      }
+    if ( $query->is_tax('campaign_category') ) {
+      $query->set( 'posts_per_page', '4' );
+    }
+    if ( $query->is_tax('voice_category') ) {
+      $query->set( 'posts_per_page', '6' );
+    }
 }
 add_action( 'pre_get_posts', 'change_posts_per_page' );
 
+// ------------------------------------------------
 // contact form 7で自動生成されるpタグを削除
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+// ------------------------------------------------
 // お問い合わせ完了ページへ遷移
 add_action('wp_footer', 'redirect_to_thanks_page');
 function redirect_to_thanks_page() {
@@ -88,6 +89,7 @@ function redirect_to_thanks_page() {
   EOD;
 }
 
+// ------------------------------------------------
 function Change_menulabel() {
   global $menu;
   global $submenu;
@@ -114,7 +116,70 @@ function Change_menulabel() {
   add_action( 'init', 'Change_objectlabel' );
   add_action( 'admin_menu', 'Change_menulabel' );
 
+// ------------------------------------------------
+  // the_excerptで表示する文字数を変更
   function custom_excerpt_length( $length ) {
     return 85;	//表示したい文字数
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+// ------------------------------------------------
+
+
+function dynamic_field_values ( $tag, $unused ) {
+
+  if ( $tag['name'] != 'campaign' )  // Contact Form 7内に記入するフィールド名
+      return $tag;
+
+  $args = array (
+      'numberposts'   => -1, //全件
+      'post_type'     => 'campaign', // 投稿タイプスラッグ
+      'orderby' => 'date', // 投稿順に表示
+  );
+
+  $custom_posts = get_posts($args);
+
+  if ( ! $custom_posts )
+      return $tag;
+
+  foreach ( $custom_posts as $custom_post ) {
+
+      $tag['raw_values'][] = $custom_post->post_title;
+      $tag['values'][] = $custom_post->post_title;
+      $tag['labels'][] = $custom_post->post_title;
+  }
+
+  return $tag;
+
+}
+
+add_filter( 'wpcf7_form_tag', 'dynamic_field_values', 10, 2);
+
+
+function add_custom_select_placeholder_script() {
+  ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var selectElement = document.querySelector('select[name="campaign"]');
+      if (selectElement) {
+        var placeholderText = 'キャンペーン内容を選択'; // カスタムプレースホルダーテキストを指定
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = placeholderText;
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        selectElement.insertBefore(defaultOption, selectElement.firstChild);
+
+        selectElement.addEventListener('change', function() {
+          if (this.value === '') {
+            this.style.color = '#888';
+          } else {
+            this.style.color = '#000';
+          }
+        });
+      }
+    });
+  </script>
+  <?php
+  }
+  add_action('wp_footer', 'add_custom_select_placeholder_script');

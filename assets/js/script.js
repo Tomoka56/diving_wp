@@ -29,10 +29,11 @@ jQuery(function ($) {
     });
   });
 
+  // ローディング・メインビュースライダー・ヘッダーの処理
   $(function () {
     var flg = null;
     var check_access = function check_access() {
-      // ★sessionStorageの値を判定
+      // sessionStorageの値を判定
       if (sessionStorage.getItem('access_flg')) {
         // 2回目以降
         flg = 1;
@@ -44,45 +45,74 @@ jQuery(function ($) {
       return flg;
     };
     var $i = check_access();
-    if ($i == 0) {
-      // 1回目アクセスの処理
-      $(document).ready(function () {
-        // ローディング画面ちらつき防止
-        $('.js-loading').css('display', 'block');
-        $('.js-loading').delay(3000).fadeOut(2000);
-        $('body').css('display', 'block');
-        setTimeout(function () {
-          // fvスライダー
-          var swiper1 = new Swiper(".js-fv-slider", {
-            loop: true,
-            speed: 1500,
-            autoplay: {
-              delay: 2500
-            },
-          });
-          $('.js-btn,.js-mask').addClass('is-hidden');
-          $('.js-header').addClass('color');
-        }, 7000); // 遅延時間
-      });
+
+    // 現在のページのURLを取得
+    var currentPageURL = window.location.href;
+    // トップページのURLを指定（トップページのURLに応じて適宜変更してください）
+    var topPageURL = 'http://diving.local/';
+
+    if (currentPageURL === topPageURL) {
+      // トップページの場合の処理
+      if ($i == 0) {
+        // 1回目アクセスの処理
+        $(document).ready(function () {
+          // ローディング画面ちらつき防止
+          $('.js-loading').css('display', 'block');
+          $('.js-loading').delay(3000).fadeOut(2000);
+          $('body').css('display', 'block');
+          setTimeout(function () {
+            // fvスライダー
+            var swiper1 = new Swiper(".js-fv-slider", {
+              loop: true,
+              speed: 2000,
+              autoplay: {
+                delay: 2000
+              },
+            });
+            $('.js-btn,.js-mask').addClass('is-hidden');
+            $('.js-header').addClass('color');
+          }, 7000); // 遅延時間
+        });
+      } else {
+        // 2回目アクセスの処理
+        $(document).ready(function () {
+          $('.js-loading').hide();
+          $('.js-btn,.js-mask,.js-loading').addClass('is-hidden');
+          $('body').css('display', 'block');
+          setTimeout(function () {
+            var swiper1 = new Swiper(".js-fv-slider", {
+              loop: true,
+              speed: 2000,
+              autoplay: {
+                delay: 2000
+              },
+            });
+            $('.js-header').addClass('color');
+          }, 4000);
+        });
+      }
     } else {
-      // 2回目アクセスの処理
       $(document).ready(function () {
         $('.js-loading').hide();
         $('.js-btn,.js-mask,.js-loading').addClass('is-hidden');
         $('body').css('display', 'block');
+        $('.js-header').addClass('color');
         setTimeout(function () {
           var swiper1 = new Swiper(".js-fv-slider", {
             loop: true,
-            speed: 1500,
+            speed: 2000,
             autoplay: {
-              delay: 2500
+              delay: 2000
             },
           });
-          $('.js-header').addClass('color');
-        }, 4000);
+        });
       });
     }
   });
+
+
+
+
 
   // ハンバーガーメニュー/ドロワーメニュー
   $('.js-hamburger,.sp-nav__link').click(function () {
@@ -200,7 +230,6 @@ jQuery(function ($) {
   });
 
   // Aboutモーダル
-
   // JavaScriptの部分
   var scrollPos;
   $(".js-photo").click(function () {
@@ -223,13 +252,15 @@ jQuery(function ($) {
   // Informationタブメニュー
   $(function () {
     $(".js-content:first-of-type").css("display", "block");
-    $(".js-tab").on("click", function () {
+    $(".js-tab2").on("click", function () {
       $(".is-active").removeClass("is-active");
       $(this).addClass("is-active");
       var index = $(this).index();
       $(".js-content").hide().eq(index).fadeIn(300);
     });
   });
+
+  // アコーディオンメニュー
   $('.js-accordion').on('click', function () {
     $(this).next().slideToggle(300);
     $(this).toggleClass('is-close', 300);

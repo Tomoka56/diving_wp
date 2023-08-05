@@ -29,6 +29,7 @@ get_header(); ?>
         </div>
           <div class="page-contact__form">
             <?php echo do_shortcode('[contact-form-7 id="198" title="お問い合わせフォーム"]');?>
+            <!-- <?php echo do_shortcode('[contact-form-7 id="262" title="お問い合わせフォーム1"]');?> -->
             <!-- <form action="" class="form"> -->
               <!-- <div class="form__inner">
                 <dl class="form__items">
