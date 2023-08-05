@@ -195,16 +195,16 @@ $contact = esc_url(home_url('/contact'));
       </div>
     </div>
   </section>
-  <section class="top-blog blog" id="blog">
-    <div class="blog__inner inner">
-      <div class="blog__head">
+  <section class="top-blog blog1" id="blog">
+    <div class="blog1__inner inner">
+      <div class="blog1__head">
         <div class="section-title section-title--white">
           <span class="section-title__en">blog</span>
           <h2 class="section-title__ja">ブログ</h2>
         </div>
       </div>
-      <div class="blog__container">
-        <div class="blog__cards blog-card-list">
+      <div class="blog1__container">
+        <div class="blog1__cards blog-card-list">
           <?php
           $args = array(
             'post_type' => 'post',
@@ -237,7 +237,7 @@ $contact = esc_url(home_url('/contact'));
             <?php wp_reset_postdata(); ?>
           <?php endif; ?>
         </div>
-        <div class="blog__btn">
+        <div class="blog1__btn">
           <a href="<?php echo $blog; ?>" class="btn">
             <span class="btn__bg"><span class="btn__text">View&nbsp;more</span></span>
           </a>
