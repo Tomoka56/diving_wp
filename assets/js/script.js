@@ -1,14 +1,6 @@
 "use strict";
 
 jQuery(function ($) {
-  // ヘッダーの高さ分だけコンテンツを下げる
-  $(function () {
-    var height = $(".js-header").height();
-    // pc-nav__item aをクリックしたときの処理
-    $(".pc-nav__item a, .sp-nav__item a").click(function () {
-      $("main").css("margin-top", height);
-    });
-  });
   $(document).on('click', 'a[href*="#"]', function () {
     var time = 400;
     var header = $('header').innerHeight();
