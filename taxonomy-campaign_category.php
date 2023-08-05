@@ -27,17 +27,24 @@ $contact = esc_url(home_url('/contact'));
                   <?php
                     $campaign = esc_url(home_url('/campaign'));
                   ?>
-                  <li class="tab1__item"><a href="<?php echo $campaign; ?>">ALL</a></li>
-                  <?php
-                    $taxonomy_terms = get_terms('campaign_category');
-                    if(!empty($taxonomy_terms)&&!is_wp_error($taxonomy_terms)){
-                      foreach($taxonomy_terms as $taxonomy_term):
-                        $taxonomy_term_link = get_term_link($taxonomy_term->slug,'campaign_category');
-                        $taxonomy_term_name = $taxonomy_term->name;
-                        echo '<li class="tab1__item"><a href="'.$taxonomy_term_link.'">'.$taxonomy_term_name.'</a></li>';
-                      endforeach;
+                  <a href="<?php echo $voice; ?>">
+                  <li class="tab1__item js-tab1">ALL</li>
+                </a>
+                <?php
+                $taxonomy_terms = get_terms('campaign_category');
+                if (!empty($taxonomy_terms) && !is_wp_error($taxonomy_terms)) {
+                  foreach ($taxonomy_terms as $taxonomy_term) {
+                    $taxonomy_term_link = get_term_link($taxonomy_term->slug, 'campaign_category');
+                    $taxonomy_term_name = $taxonomy_term->name;
+                    $is_current_term = false;
+                    if (is_tax('campaign_category', $taxonomy_term->slug)) {
+                      $is_current_term = true;
                     }
-                  ?>
+                    $current_tab_class = $is_current_term ? 'is-active' : '';
+                    echo '<a href="' . $taxonomy_term_link . '"><li class="tab1__item ' . $current_tab_class . '">' . $taxonomy_term_name . '</li></a>';
+                  }
+                }
+                ?>
                 </ul>
               </div>
             </div>
