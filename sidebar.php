@@ -32,12 +32,21 @@ $campaign = esc_url(home_url('/campaign'));
                   </div>
                 <?php else : ?>
                   <div class="sub-blog-card__img">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/noimage.jpg" alt="珊瑚礁" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/sky.jpg" alt="空" />
                   </div>
                 <?php endif; ?>
                 <div class="sub-blog-card__body">
                   <time class="sub-blog-card__date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y-m-d'); ?></time>
-                  <h3 class="sub-blog-card__title"><?php the_title(); ?></h3>
+                  <h3 class="sub-blog-card__title">
+                    <?php
+                    if (mb_strlen($post->post_title, 'UTF-8') > 17) {
+                      $title = mb_substr($post->post_title, 0, 17, 'UTF-8');
+                      echo $title . '…';
+                    } else {
+                      echo $post->post_title;
+                    }
+                    ?>
+                  </h3>
                 </div>
               </div>
             </a>
@@ -75,29 +84,29 @@ $campaign = esc_url(home_url('/campaign'));
                         </span>
                       <?php else : ?>
                         <span class="extend__img">
-                          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/man.jpg" alt="体験者シルエットイメージ" />
+                          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/man.png" alt="体験者シルエットイメージ" />
                         </span>
                       <?php endif; ?>
                     </span>
                   </span>
                 </div>
                 <div class="sub-voice-card__info">
-                    <?php $age = get_field('age');
-                    if ($age) {  ?>
-                      <span class="voice-card__age-sex">
-                        <?php echo $age; ?>
-                      </span>
-                    <?php
-                    }
-                    ?>
-                    <?php $sex = get_field('sex');
-                    if ($sex) {  ?>
-                      <span class="voice-card__age-sex">
-                        (<?php echo $sex; ?>)
-                      </span>
-                    <?php
-                    }
-                    ?>
+                  <?php $age = get_field('age');
+                  if ($age) {  ?>
+                    <span class="voice-card__age-sex">
+                      <?php echo $age; ?>
+                    </span>
+                  <?php
+                  }
+                  ?>
+                  <?php $sex = get_field('sex');
+                  if ($sex) {  ?>
+                    <span class="voice-card__age-sex">
+                      (<?php echo $sex; ?>)
+                    </span>
+                  <?php
+                  }
+                  ?>
                   <h3 class="sub-voice-card__title"><?php the_title(); ?></h3>
                 </div>
               </div>
@@ -169,18 +178,54 @@ $campaign = esc_url(home_url('/campaign'));
         <h2 class="side-bar__title">アーカイブ</h2>
       </div>
       <div class="side-bar__items archive-list">
-        <details class="archive-list__toggle-item" open>
-          <summary class="archive-list__year">2023</summary>
-          <a href="<?php echo get_month_link( 2023, 8 ); ?>"><p class="archive-list__month">8月</p></a>
-          <a href="<?php echo get_month_link( 2023, 7 ); ?>"><p class="archive-list__month">7月</p></a>
-          <a href="<?php echo get_month_link( 2023, 6 ); ?>"><p class="archive-list__month">6月</p></a>
-        </details>
-        <details class="archive-list__toggle-item">
-          <summary class="archive-list__year">2022</summary>
-          <p class="archive-list__month">3月</p>
-          <p class="archive-list__month">2月</p>
-          <p class="archive-list__month">1月</p>
-        </details>
+        <?php
+        $current_year = date('Y');
+        for ($year = $current_year; $year >= $current_year - 2; $year--) {
+          $archive_link = get_year_link($year);
+          $args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'date_query' => array(
+              array(
+                'year' => $year,
+              ),
+            ),
+          );
+          $query = new WP_Query($args);
+          if ($query->have_posts()) {
+            $is_current_year = ($year === $current_year);
+        ?>
+            <details class="archive-list__toggle-item" <?php echo $is_current_year ? 'open' : ''; ?>>
+              <summary class="archive-list__year"><?php echo $year; ?></summary>
+              <?php
+              for ($month = 12; $month >= 1; $month--) {
+                $archive_link = get_month_link($year, $month);
+                $args = array(
+                  'post_type' => 'post',
+                  'post_status' => 'publish',
+                  'date_query' => array(
+                    array(
+                      'year' => $year,
+                      'month' => $month,
+                    ),
+                  ),
+                );
+                $query = new WP_Query($args);
+                if ($query->have_posts()) {
+                  $month_label = date('n月', mktime(0, 0, 0, $month, 1, $year));
+              ?>
+                  <a href="<?php echo $archive_link; ?>">
+                    <p class="archive-list__month"><?php echo $month_label; ?></p>
+                  </a>
+              <?php
+                }
+              }
+              ?>
+            </details>
+        <?php
+          }
+        }
+        ?>
       </div>
     </div>
   </div>
