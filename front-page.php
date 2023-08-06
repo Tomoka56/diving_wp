@@ -209,7 +209,7 @@ $contact = esc_url(home_url('/contact'));
           $args = array(
             'post_type' => 'post',
             'posts_per_page' => 3,
-            'orderby' => 'rand',
+            'order' => 'DESC',
           );
           $blog_query = new WP_Query($args);
           ?>
@@ -301,7 +301,7 @@ $contact = esc_url(home_url('/contact'));
                           </span>
                         <?php else : ?>
                           <span class="extend__img">
-                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/man.jpg" alt="体験者シルエットイメージ" />
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/man.png" alt="体験者シルエットイメージ" />
                           </span>
                         <?php endif; ?>
                       </span>
