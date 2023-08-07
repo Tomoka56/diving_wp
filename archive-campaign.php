@@ -42,7 +42,8 @@ $contact = esc_url(home_url('/contact'));
                   <div class="sub-campaign__card campaign-card">
                     <?php if (has_post_thumbnail()) : ?>
                       <div class="campaign-card__img">
-                        <?php the_post_thumbnail(); ?>
+                        <?php $post_id = get_the_ID(); ?>
+                        <img src="<?php echo get_the_post_thumbnail_url($post_id, 'large'); ?>" alt="<?php echo custom_get_img_alt($post_id); ?>">
                       </div>
                     <?php else : ?>
                       <div class="campaign-card__img">

@@ -183,3 +183,12 @@ function add_custom_select_placeholder_script() {
   <?php
   }
   add_action('wp_footer', 'add_custom_select_placeholder_script');
+
+  // altテキストを取得する関数
+function custom_get_img_alt($post_id) {
+  $alt_text = get_post_meta($post_id, 'alt_text', true);
+  if (empty($alt_text)) {
+      $alt_text = get_the_title($post_id);
+  }
+  return esc_attr($alt_text);
+}

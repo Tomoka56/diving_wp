@@ -26,7 +26,8 @@
                 <a href="<?php the_permalink(); ?>" class="blog-card-list__item blog-card">
                 <?php if (has_post_thumbnail()) : ?>
                   <div class="blog-card__img">
-                    <?php the_post_thumbnail(); ?>
+                  <?php $post_id = get_the_ID(); ?>
+                  <img src="<?php echo get_the_post_thumbnail_url($post_id, 'large'); ?>" alt="<?php echo custom_get_img_alt($post_id); ?>">
                   </div>
                 <?php else : ?>
                   <div class="blog-card__img">

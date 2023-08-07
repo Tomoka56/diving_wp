@@ -70,7 +70,9 @@
                         <span class="extend__wrap js-wrapper">
                           <?php if (has_post_thumbnail()) : ?>
                             <span class="extend__img">
-                              <?php the_post_thumbnail(); ?>
+                              <!-- <?php the_post_thumbnail(); ?> -->
+                              <?php $post_id = get_the_ID(); ?>
+                              <img src="<?php echo get_the_post_thumbnail_url($post_id, 'large'); ?>" alt="<?php echo custom_get_img_alt($post_id); ?>">
                             </span>
                           <?php else : ?>
                             <span class="extend__img">
