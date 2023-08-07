@@ -2056,13 +2056,9 @@ details[open] summary::before {
 
 .price-list__course {
 	border-right: 0.0625rem solid #408F95;
-	padding: 0.4375rem 1rem;
+	padding: 1.1875rem 1rem;
 	text-align: center;
 	width: 69.5%;
-}
-
-.price-list__course--padding {
-	padding: 1.1875rem 1rem;
 }
 
 .price-list__price {
@@ -2328,7 +2324,7 @@ details[open] summary::before {
 .sp-nav__block {
 	display: flex;
 	justify-content: center;
-	padding-bottom: 8.125rem;
+	padding-bottom: 11.25rem;
 	padding-top: 3.125rem;
 }
 
@@ -2869,7 +2865,7 @@ details[open] summary::before {
 	-o-object-fit: cover;
 	aspect-ratio: 294/218;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	width: 100%;
 }
 
@@ -3942,13 +3938,13 @@ a:hover {
 }
 
 .form__item {
-	align-items: baseline;
 	display: flex;
 	padding-bottom: 2.5625rem;
 }
 
 .form__item dt {
 	width: 13.75rem;
+	margin-top: 1rem;
 }
 
 .form__item dd {
@@ -4221,10 +4217,6 @@ a:hover {
 	padding: 1.125rem 1rem;
 	text-align: left;
 	width: 21.25rem;
-}
-
-.price-list__course--padding {
-	padding: 1.125rem 1rem;
 }
 
 .price-list__price {
