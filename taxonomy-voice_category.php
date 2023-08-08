@@ -90,7 +90,7 @@ $contact = esc_url(home_url('/contact'));
                               </span>
                             <?php else : ?>
                               <span class="extend__img">
-                                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/dog.jpg" alt="体験者（麦わら帽子を被った笑顔の女性）" />
+                                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/man.png" alt="体験者シルエット" />
                               </span>
                             <?php endif; ?>
                           </span>
