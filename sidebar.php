@@ -4,7 +4,7 @@ $voice = esc_url(home_url('/voice'));
 $campaign = esc_url(home_url('/campaign'));
 ?>
 
-<div class="sub-blog__side-contents">
+<aside class="sub-blog__side-contents">
   <div class="sub-blog__side-contents-inner">
     <div class="sub-blog__side-block side-bar">
       <div class="side-bar__head">
@@ -38,7 +38,7 @@ $campaign = esc_url(home_url('/campaign'));
                 <div class="sub-blog-card__body">
                   <time class="sub-blog-card__date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y-m-d'); ?></time>
                   <h3 class="sub-blog-card__title">
-                    <?php
+                  <?php
                     if (mb_strlen($post->post_title, 'UTF-8') > 17) {
                       $title = mb_substr($post->post_title, 0, 17, 'UTF-8');
                       echo $title . '…';
@@ -178,55 +178,55 @@ $campaign = esc_url(home_url('/campaign'));
         <h2 class="side-bar__title">アーカイブ</h2>
       </div>
       <div class="side-bar__items archive-list">
-        <?php
-        $current_year = date('Y');
-        for ($year = $current_year; $year >= $current_year - 2; $year--) {
-          $archive_link = get_year_link($year);
-          $args = array(
-            'post_type' => 'post',
-            'post_status' => 'publish',
-            'date_query' => array(
-              array(
-                'year' => $year,
+          <?php
+          $current_year = date('Y');
+          for ($year = $current_year; $year >= $current_year - 2; $year--) {
+            $archive_link = get_year_link($year);
+            $args = array(
+              'post_type' => 'post',
+              'post_status' => 'publish',
+              'date_query' => array(
+                array(
+                  'year' => $year,
+                ),
               ),
-            ),
-          );
-          $query = new WP_Query($args);
-          if ($query->have_posts()) {
-            $is_current_year = ($year === $current_year);
-        ?>
-            <details class="archive-list__toggle-item" <?php echo $is_current_year ? 'open' : ''; ?>>
-              <summary class="archive-list__year"><?php echo $year; ?></summary>
-              <?php
-              for ($month = 12; $month >= 1; $month--) {
-                $archive_link = get_month_link($year, $month);
-                $args = array(
-                  'post_type' => 'post',
-                  'post_status' => 'publish',
-                  'date_query' => array(
-                    array(
-                      'year' => $year,
-                      'month' => $month,
+            );
+            $query = new WP_Query($args);
+            if ($query->have_posts()) {
+              $is_current_year = ($year === $current_year);
+          ?>
+              <details class="archive-list__toggle-item" <?php echo $is_current_year ? 'open' : ''; ?>>
+                <summary class="archive-list__year"><?php echo $year; ?></summary>
+                <?php
+                for ($month = 12; $month >= 1; $month--) {
+                  $archive_link = get_month_link($year, $month);
+                  $args = array(
+                    'post_type' => 'post',
+                    'post_status' => 'publish',
+                    'date_query' => array(
+                      array(
+                        'year' => $year,
+                        'month' => $month,
+                      ),
                     ),
-                  ),
-                );
-                $query = new WP_Query($args);
-                if ($query->have_posts()) {
-                  $month_label = date('n月', mktime(0, 0, 0, $month, 1, $year));
-              ?>
-                  <a href="<?php echo $archive_link; ?>">
-                    <p class="archive-list__month"><?php echo $month_label; ?></p>
-                  </a>
-              <?php
+                  );
+                  $query = new WP_Query($args);
+                  if ($query->have_posts()) {
+                    $month_label = date('n月', mktime(0, 0, 0, $month, 1, $year));
+                ?>
+                    <a href="<?php echo $archive_link; ?>">
+                      <p class="archive-list__month"><?php echo $month_label; ?></p>
+                    </a>
+                <?php
+                  }
                 }
-              }
-              ?>
-            </details>
-        <?php
+                ?>
+              </details>
+          <?php
+            }
           }
-        }
-        ?>
+          ?>
       </div>
     </div>
   </div>
-</div>
+</aside>
