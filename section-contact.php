@@ -11,7 +11,7 @@ $contact = esc_url(home_url('/contact'));
             <div class="contact__info">
               <div class="contact__site-title">
                 <div class="contact__logo">
-                  <a href="index.html" class="contact__link">
+                  <a href="<?php echo esc_url(home_url('/')); ?>" class="contact__link">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo-blue.svg" alt="CodeUps" />
                   </a>
                 </div>
