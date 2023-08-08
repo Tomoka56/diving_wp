@@ -23,7 +23,7 @@ get_header(); ?>
               </p>
             </div>
             <div class="page-404__btn">
-              <a href="index.html" class="btn btn--white">
+              <a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn--white">
                 <span class="btn__bg btn__bg--white"><span class="btn__text btn__text--green">Page&nbsp;TOP</span></span>
               </a>
             </div>
