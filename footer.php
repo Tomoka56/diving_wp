@@ -1,6 +1,9 @@
 <?php
 $home = esc_url(home_url('/'));
 $campaign = esc_url(home_url('/campaign'));
+$license = esc_url(home_url('/campaign_category/license/'));
+$experience = esc_url(home_url('/campaign_category/experience/'));
+$fun = esc_url(home_url('/campaign_category/fun/'));
 $about_us = esc_url(home_url('/about-us'));
 $information = esc_url(home_url('/information'));
 $blog = esc_url(home_url('/blog'));
@@ -35,10 +38,10 @@ $terms_of_service = esc_url(home_url('/terms-of-service'));
       <div class="footer__sns">
         <ul class="footer__sns-items">
           <li class="footer__sns-item">
-            <a href="https://www.facebook.com/" class="footer__sns-link"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/facebooklogo.png" alt="Facebook" /></a>
+            <a href="https://www.facebook.com/" class="footer__sns-link" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/facebooklogo.png" alt="Facebook" /></a>
           </li>
           <li class="footer__sns-item">
-            <a href="https://www.instagram.com/" class="footer__sns-link"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/instagramlogo.png" alt="Instagram" /></a>
+            <a href="https://www.instagram.com/" class="footer__sns-link" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/instagramlogo.png" alt="Instagram" /></a>
           </li>
         </ul>
       </div>
@@ -53,13 +56,13 @@ $terms_of_service = esc_url(home_url('/terms-of-service'));
                   <span class="sub-nav__menu">キャンペーン</span></a>
               </li>
               <li class="sub-nav__item">
-                <a href="<?php echo $campaign; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">ライセンス取得</span></a>
+                <a href="<?php echo $license; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">ライセンス取得</span></a>
               </li>
               <li class="sub-nav__item">
-                <a href="<?php echo $campaign; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">貸切体験ダイビング</span></a>
+                <a href="<?php echo $experience; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">体験ダイビング</span></a>
               </li>
               <li class="sub-nav__item">
-                <a href="<?php echo $campaign; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">ナイトダイビング</span></a>
+                <a href="<?php echo $fun; ?>" class="sub-nav__link"><span class="sub-nav__menu sub-nav__menu--sub">ファンダイビング</span></a>
               </li>
             </ul>
             <ul class="sub-nav__items">
@@ -124,6 +127,12 @@ $terms_of_service = esc_url(home_url('/terms-of-service'));
               <li class="sub-nav__item">
                 <a href="<?php echo $faq; ?>" class="sub-nav__link sub-nav__link--icon">
                   <span class="sub-nav__menu">よくある質問</span></a>
+              </li>
+            </ul>
+            <ul class="sub-nav__items">
+              <li class="sub-nav__item">
+                <a href="<?php echo $site_map; ?>" class="sub-nav__link sub-nav__link--icon">
+                  <span class="sub-nav__menu">サイトマップ</span></a>
               </li>
             </ul>
             <ul class="sub-nav__items">
