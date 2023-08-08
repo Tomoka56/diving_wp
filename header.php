@@ -6,11 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="format-detection" content="telephone=no" />
   <?php wp_head(); ?>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTV5XX4YL6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DTV5XX4YL6');
+</script>
 </head>
 
 <?php
 $home = esc_url(home_url('/'));
 $campaign = esc_url(home_url('/campaign'));
+$license = esc_url(home_url('/campaign_category/license/'));
+$experience = esc_url(home_url('/campaign_category/experience/'));
+$fun = esc_url(home_url('/campaign_category/fun/'));
 $about_us = esc_url(home_url('/about-us'));
 $information = esc_url(home_url('/information'));
 $blog = esc_url(home_url('/blog'));
@@ -82,13 +94,13 @@ $terms_of_service = esc_url(home_url('/terms-of-service'));
               <span class="sp-nav__menu">キャンペーン</span></a>
           </li>
           <li class="sp-nav__item">
-            <a href="<?php echo $campaign; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">ライセンス取得</span></a>
+            <a href="<?php echo $license; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">ライセンス取得</span></a>
           </li>
           <li class="sp-nav__item">
-            <a href="<?php echo $campaign; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">貸切体験ダイビング</span></a>
+            <a href="<?php echo $experience; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">体験ダイビング</span></a>
           </li>
           <li class="sp-nav__item">
-            <a href="<?php echo $campaign; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">ナイトダイビング</span></a>
+            <a href="<?php echo $fun; ?>" class="sp-nav__link"><span class="sp-nav__menu sp-nav__menu--sub">ファンダイビング</span></a>
           </li>
         </ul>
         <ul class="sp-nav__items">
@@ -147,6 +159,12 @@ $terms_of_service = esc_url(home_url('/terms-of-service'));
           <li class="sp-nav__item">
             <a href="<?php echo $faq; ?>" class="sp-nav__link sp-nav__link--icon">
               <span class="sp-nav__menu">よくある質問</span></a>
+          </li>
+        </ul>
+        <ul class="sp-nav__items">
+          <li class="sp-nav__item">
+            <a href="<?php echo $site_map; ?>" class="sp-nav__link sp-nav__link--icon">
+              <span class="sp-nav__menu">サイトマップ</span></a>
           </li>
         </ul>
         <ul class="sp-nav__items">
