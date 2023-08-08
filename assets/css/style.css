@@ -345,16 +345,6 @@ summary::-webkit-details-marker {
 	position: relative;
 }
 
-summary {
-  display: block;  /* 矢印のアイコンを非表示にする */
-}
-
-/* Safari で三角形のアイコンを非表示にする */
-summary::-webkit-details-marker {
-  display: none;
-}
-
-
 summary::before {
 	border-color: transparent transparent transparent #408F95;
 	border-style: solid;
@@ -391,6 +381,19 @@ details[open] summary::before {
 	top: 50%;
 	transform: translateY(-50%);
 	width: 0;
+}
+
+summary {
+	display: block;  /* 矢印のアイコンを非表示にする */
+}
+
+/* Safari で三角形のアイコンを非表示にする */
+summary::-webkit-details-marker {
+	display: none;
+}
+
+summary::marker {
+	display: none;
 }
 
 .blog-card-list {
@@ -2441,10 +2444,10 @@ details[open] summary::before {
 }
 
 .sub-blog-card__img img {
-	-o-object-fit: contain;
+	-o-object-fit: cover;
 	aspect-ratio: 121/90;
 	height: 100%;
-	object-fit: contain;
+	object-fit: cover;
 	width: 100%;
 }
 
@@ -3153,7 +3156,7 @@ details[open] summary::before {
 	-o-object-fit: cover;
 	aspect-ratio: 151/117;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	width: 100%;
 }
 

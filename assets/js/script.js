@@ -21,7 +21,7 @@ jQuery(function ($) {
     });
   });
 
-  // ローディング・メインビュースライダー・ヘッダーの処理
+   // ローディング・メインビュースライダー・ヘッダーの処理
   $(function () {
     var flg = null;
     var check_access = function check_access() {
@@ -72,11 +72,10 @@ jQuery(function ($) {
             },
           });
           $('.js-header').addClass('color');
-        }, 4000);
+        }, 3000);
       });
     }
   });
-
 
 
   // ハンバーガーメニュー/ドロワーメニュー
