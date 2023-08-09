@@ -227,17 +227,14 @@ $contact = esc_url(home_url('/contact'));
                 <?php endif; ?>
                 <div class="blog-card__body">
                   <time class="blog-card__date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-                  <h3 class="blog-card__title"><?php the_title(); ?></h3>
+                  <h3 class="blog-card__title">
+                    <?php echo wp_trim_words(get_the_title(), 34, '…'); ?>
+                  </h3>
                   <p class="blog-card__text">
                     <?php
-                    if (has_excerpt()) {
-                      the_excerpt();
-                    } else {
-                      $content = get_the_content();
-                      $content = strip_tags($content);
-                      $excerpt = mb_substr($content, 0, 85) . '...';
-                      echo $excerpt;
-                    }
+                      $content = has_excerpt() ? get_the_excerpt() : get_the_content();
+                      $trimmed_content = wp_trim_words($content, 85, '…');
+                      echo $trimmed_content;
                     ?>
                   </p>
                 </div>
