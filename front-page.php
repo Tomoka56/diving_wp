@@ -229,7 +229,16 @@ $contact = esc_url(home_url('/contact'));
                   <time class="blog-card__date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
                   <h3 class="blog-card__title"><?php the_title(); ?></h3>
                   <p class="blog-card__text">
-                    <?php the_excerpt(); ?>
+                    <?php
+                    if (has_excerpt()) {
+                      the_excerpt();
+                    } else {
+                      $content = get_the_content();
+                      $content = strip_tags($content);
+                      $excerpt = mb_substr($content, 0, 85) . '...';
+                      echo $excerpt;
+                    }
+                    ?>
                   </p>
                 </div>
               </a>
@@ -290,7 +299,9 @@ $contact = esc_url(home_url('/contact'));
                       }
                       ?>
                     </div>
-                    <h3 class="voice-card__title"><?php the_title(); ?></h3>
+                    <h3 class="voice-card__title">
+                      <?php echo wp_trim_words( get_the_title(), 20, '…' ); ?>
+                    </h3>
                   </div>
                   <div class="voice-card__img">
                     <span class="extend js-extend">
@@ -309,7 +320,9 @@ $contact = esc_url(home_url('/contact'));
                   </div>
                 </div>
                 <div class="voice-card__text-area">
-                  <p class="voice-card__text"><?php the_content(); ?></p>
+                  <p class="voice-card__text">
+                    <?php echo wp_trim_words( get_the_content(), 200, '…' ); ?>
+                  </p>
                 </div>
               </div>
             <?php endwhile; ?>
