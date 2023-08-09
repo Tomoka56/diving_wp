@@ -3132,15 +3132,11 @@ summary::marker {
 }
 
 .voice-card__title {
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
 	border-bottom: 1px solid #408F95;
-	display: -webkit-box;
 	font-size: 1rem;
 	font-weight: 500;
 	line-height: 1.448125;
 	margin-top: 0.25rem;
-	overflow: hidden;
 	padding-bottom: 0.25rem;
 }
 
@@ -3162,13 +3158,6 @@ summary::marker {
 
 .voice-card__text-area {
 	margin-top: 0.9375rem;
-}
-
-.voice-card__text {
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 10;
-	display: -webkit-box;
-	overflow: hidden;
 }
 
 .voice__inner {
@@ -4714,10 +4703,6 @@ a:hover {
 
 .voice-card__text-area {
 	margin-top: 2.4375rem;
-}
-
-.voice-card__text {
-	-webkit-line-clamp: 7;
 }
 
 .voice__inner::before {

@@ -70,7 +70,6 @@
                         <span class="extend__wrap js-wrapper">
                           <?php if (has_post_thumbnail()) : ?>
                             <span class="extend__img">
-                              <!-- <?php the_post_thumbnail(); ?> -->
                               <?php $post_id = get_the_ID(); ?>
                               <img src="<?php echo get_the_post_thumbnail_url($post_id, 'large'); ?>" alt="<?php echo custom_get_img_alt($post_id); ?>">
                             </span>
@@ -84,7 +83,9 @@
                     </div>
                   </div>
                   <div class="voice-card__text-area">
-                    <p class="voice-card__text"><?php the_content(); ?></p>
+                    <p class="voice-card__text">
+                      <?php the_content(); ?>
+                    </p>
                   </div>
                 </div>
               <?php endwhile; ?>
