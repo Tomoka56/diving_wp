@@ -38,14 +38,7 @@ $campaign = esc_url(home_url('/campaign'));
                 <div class="sub-blog-card__body">
                   <time class="sub-blog-card__date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y-m-d'); ?></time>
                   <h3 class="sub-blog-card__title">
-                  <?php
-                    if (mb_strlen($post->post_title, 'UTF-8') > 17) {
-                      $title = mb_substr($post->post_title, 0, 17, 'UTF-8');
-                      echo $title . '…';
-                    } else {
-                      echo $post->post_title;
-                    }
-                    ?>
+                    <?php echo wp_trim_words( get_the_title(), 16, '…' ); ?>
                   </h3>
                 </div>
               </div>
